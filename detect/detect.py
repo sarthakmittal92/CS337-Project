@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 detector = cv2.dnn.readNetFromCaffe("deploy.prototxt" , "res10_300x300_ssd_iter_140000.caffemodel")
 
 # image resizing
-image = cv2.imread("../pf.png")
+image = cv2.imread("../angelina.webp")
 print(image.shape)
 base_img = image.copy()
 original_size = base_img.shape
