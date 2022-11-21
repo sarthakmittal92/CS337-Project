@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 detector = cv2.dnn.readNetFromCaffe("deploy.prototxt" , "res10_300x300_ssd_iter_140000.caffemodel")
 
 # image resizing
-image = cv2.imread("../angelina.webp")
+image = cv2.imread("../images/001.webp")
 print(image.shape)
 base_img = image.copy()
 original_size = base_img.shape
@@ -47,6 +47,6 @@ for i, instance in detections_df.iterrows():
     detected_face = base_img[int(top*aspect_ratio_y):int(bottom*aspect_ratio_y) ,
     int(left*aspect_ratio_x):int(right*aspect_ratio_x)]
     print("Id ",i,". Confidence: ", confidence_score)
-    cv2.imwrite('face.png',detected_face[:,:,::-1])
+    cv2.imwrite('../outputs/detected/001.png',detected_face[:,:,::-1])
     plt.imshow(detected_face[:,:,::-1])
     plt.show()

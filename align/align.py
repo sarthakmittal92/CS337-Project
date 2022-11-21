@@ -1,6 +1,6 @@
 # https://sefiks.com/2020/02/23/face-alignment-for-face-recognition-in-python-within-opencv/
 
-# To detect and align the faces
+# To align the detected faces
 
 import cv2
 import math
@@ -8,21 +8,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from PIL import Image
 
-# https://raw.githubusercontent.com/kipr/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml
 # https://raw.githubusercontent.com/kipr/opencv/master/data/haarcascades/haarcascade_eye.xml
 
-face_detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 eye_detector = cv2.CascadeClassifier("haarcascade_eye.xml")
 
-## we can detect face here or use the image of faces from above code block
 # reading image
-img = cv2.imread("../angelina.webp")
+img = cv2.imread("../outputs/detected/001.png")
 img_raw = img.copy()
-faces = face_detector.detectMultiScale(img, 1.3, 5)
-face_x, face_y, face_w, face_h = faces[0]
-
-img = img[int(face_y):int(face_y+face_h), int(face_x):int(face_x+face_w)]
-cv2.imwrite('face.png',img)
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 eyes = eye_detector.detectMultiScale(img_gray)
@@ -93,10 +85,6 @@ if direction == -1:
 new_img = Image.fromarray(img_raw)
 new_img = np.array(new_img.rotate(direction * angle))
 
-faces = face_detector.detectMultiScale(new_img)
-face_x, face_y, face_w, face_h = faces[0]
-
-img = new_img[int(face_y):int(face_y+face_h), int(face_x):int(face_x+face_w)]
-cv2.imwrite('aligned.png',img)
-plt.imshow(img)
+cv2.imwrite('../outputs/aligned/001.png',new_img)
+plt.imshow(new_img)
 plt.show()
