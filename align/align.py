@@ -102,6 +102,6 @@ for dir in listdir(f'../outputs/detected/{argv[1]}'):
         print(idx)
         idx += 1
         try:
-            cv2.imwrite(f'../outputs/aligned/{argv[1]}/{dir}/aligned_{file.split("_")[1].split(".")[0]}.png',new_img)
+            cv2.imwrite(f'../outputs/aligned/{argv[1]}/{dir}/aligned_{file.split("detected_")[1].split(".")[0]}.png',new_img)
         except:
             pass
