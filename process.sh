@@ -1,8 +1,10 @@
 #!/bin/bash
 
 imgs="$1"
-cd detect
+cd backbone/detect
 python3 detect.py $imgs
 
 cd ../align
 python3 align.py $imgs
+
+cd ..
