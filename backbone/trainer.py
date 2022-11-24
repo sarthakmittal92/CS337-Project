@@ -64,5 +64,5 @@ def validate_epoch(test_dataloader,model,crit):
     return val_loss
 
 def save_model(model,exp_name):
-    experiment_name = "../experiments/best_{}.pth".format(exp_name)
+    experiment_name = "../experiments/group22.pt".format(exp_name)
     torch.save(model.state_dict(),experiment_name)

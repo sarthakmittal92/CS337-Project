@@ -25,7 +25,7 @@ trainX, trainy, testX, testy = data['arr_0'], data['arr_1'], data['arr_2'], data
 print('Loaded: ', trainX.shape, trainy.shape, testX.shape, testy.shape)
 
 model = InceptionResnetV1(pretrained='vggface2')
-model.load_state_dict(torch.load("pretrained/20180402-114759-vggface2.pt", map_location=torch.device('cpu')))
+model.load_state_dict(torch.load("experiments/group22.pt", map_location=torch.device('cpu')))
 
 print('Loaded Model')
 
