@@ -60,7 +60,6 @@ if __name__ == '__main__':
             counts[trainy[i]] += 1
     
     Attendance_Database = {k: v / counts[k] for k, v in Attendance_Database.items()}
-    # print(Attendance_Database)
 
     correct = 0
     for idx , emd in enumerate(testX):

@@ -25,7 +25,7 @@ def find_id(output, Attendance_Database):
     minimum = 100
     identity = None
     for (name, db_enc) in Attendance_Database.items():
-        dist = findEuclideanDistance(db_enc, representation)
+        dist = findCosineDistance(db_enc, representation)
         if dist < minimum:
             minimum = dist
             identity = name
@@ -33,7 +33,7 @@ def find_id(output, Attendance_Database):
     if minimum > 0.4:
         return None
     else:
-        return identity
+        return identity , dist
 
 if __name__ == '__main__':
 
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     for folder, output in Test_image.items():
 
-        id = find_id(output, Attendance_Database)
+        id , _ = find_id(output, Attendance_Database)
         if id == None:
             print(folder ,": Unknown")
             continue
